@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>
+            Boiling Point Predictor | Error
+        </title>
+        
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'gray_style.css') }}" type="text/css">
+	
+    </head>
+    <body>
+        <div id = "main-container">
+        <h1>Boiling Point Predictor</h1><p>
+        <span><strong>Oh no. Something went wrong.</strong><p>
+        <span>{{error_msg}}<p>
+        <span>Please <a href = '/'>enter a new query</a>
+        
+        <span style="font-size: small; font-style: italic">This page is best displayed on a tablet or larger device.<br>
+                                                          &copy; 2021 Joshua Hirner.
+        </div>
+    </body>
+</html>

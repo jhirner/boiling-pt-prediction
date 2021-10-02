@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>
+            Boiling Point Predictor
+        </title>
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'gray_style.css') }}" type="text/css"></link>
+	
+    </head>
+    <body>
+        <div id = "main-container">
+        <h1>Boiling Point Predictor | Results</h1><p>
+                    
+	<span style = "width: 100%; margin: auto;"">
+                       
+	<table class = "borderless-table">
+		                                        
+		<tr>
+		    <td valign = "top" align = "right"><span style = "font-weight: bold">SMILES input:</span></td>
+		    <td valign = "top">{{smiles_code}}</span></td> 
+		</tr>                
+
+		<tr>
+		    <td valign = "top" align = "right"><span style = "font-weight: bold">Chemical structure:</span></td>
+		    <td valign = "top">{{structure_img}}</td> 
+		</tr>
+		
+		<tr>
+		    <td valign = "top" align = "right"><span style = "font-weight: bold">Predicted boiling point (K):</span></td>
+		    <td valign = "top">{{bp_pred}}</td> 
+		</tr>
+		
+		<tr>
+		    <td valign = "top" align = "right"><span style = "font-weight: bold">Predicted boiling point (&deg;C):</span></td>
+		    <td valign = "top">{{bp_pred-273}}</td> 
+		</tr>
+		                                
+	</table><p></span>
+	<span><p></span>
+	<span><p></span>
+	<span><a href = "/">Go back and generate a new prediction.</a><p>
+	<span><strong>About this prediction:</strong><br>
+	<ul>
+		<li>Boiling points are reported at <i>atmospheric pressure</i> and are valid <i>only</i> for molecules with boiling points in the range of 400 - 700 K (127 - 427 &deg;C).
+		<li>Predictions are generated via an XGBoost regression machine learning model.
+		<li>The model was trained using <i>6.1k molecules</i> containing C, H, O, and N using data from the 2015 edition of the <a href = "https://www.sciencedirect.com/book/9780128008348/the-yaws-handbook-of-physical-properties-for-hydrocarbons-and-chemicals">Yaws Handbook</a>.
+		<li>The model has been validated using an additional <i>1.3k</i> molecules. Predicted values are within +/- 10% of the measured value for 99.5 % of the validation data). Further, 92 % of the predictions are with in 10 K of the measured boiling point. 
+	</ul><p></span>
+
+
+
+        
+        <span style="font-size: small; font-style: italic">This page is best displayed on a tablet or larger device.<br>
+                                                          &copy; 2021 Joshua Hirner.
+        </div>
+    </body>
+</html>
