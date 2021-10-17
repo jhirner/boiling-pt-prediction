@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>
+            Boiling Point Predictor
+        </title>
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'gray_style.css') }}" type="text/css"></link>
+	
+    </head>
+    <body>
+        <div id = "main-container">
+        <h1>Boiling Point Predictor</h1><p>
+        <span>This tool implements a machine learning model to predict the atmospheric pressure boiling point of a given molecule.</span><p>
+        <span style = "font-weight: bold">Note:</span><span> Predictions are valid for molecules with boiling points in the range of 400 - 700 K (127 - 427 &deg;C).<p>
+        <span>Please supply a valid SMILES code to get started.</span>
+            <p>
+            
+        <span style = "width: 100%; margin: auto;"">
+                       
+       <form action = "/results" method = "POST"><br>
+            <table class = "borderless-table">
+                                                                
+                <tr>
+                    <td valign = "top" align = "right"><span>SMILES code:</span></td>
+                    <td valign = "top"><input type = "text" name = "raw_smiles_input"></span></td> 
+                </tr>                
+                
+                <tr>
+                    <td valign = "top" align = "right"><span>Chemical structure:</span></td>
+                    <td valign = "top">
+                    	This feature will be implemented at a later date.<br>
+                                        </td> 
+                </tr>
+                                                        
+                <tr>
+                    <td colspan = "2"><input type = "submit" value = "Predict!">
+                </tr>
+            </table> 
+            
+        </form></span>
+
+
+
+
+
+
+        
+        <span style="font-size: small; font-style: italic">This page is best displayed on a tablet or larger device.<br>
+                                                          &copy; 2021 Joshua Hirner.<p>
+        <div style="font-size: small; font-style: italic"><a href = "https://github.com/jhirner/boiling-pt-prediction">Explore this project on GitHub</a></div>
+        </div>
+    </body>
+</html>

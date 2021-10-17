@@ -1,17 +1,17 @@
-from rdkit.Chem import Lipinski, Descriptors, MolFromSmiles, MolFromSmarts, Draw
+from rdkit.Chem import Lipinski, Descriptors, MolFromMolBlock, MolFromSmarts, Draw
 import numpy as np
 from io import BytesIO
 import base64
 
 class SmilesTransformer():
     
-    def __init__(self, smiles_code):
+    def __init__(self, mol_file):
         
-        self.smiles_code = smiles_code
+        self.mol_file = mol_file
 
-        # Check the validity of the SMILES code before proceeding.
-        self.molecule = MolFromSmiles(smiles_code)
-        self.valid_smiles = True if self.molecule is not None else False
+        # Check the validity of the MOL file input before proceeding.
+        self.molecule = MolFromMolBlock(self.mol_file)
+        self.valid_structure = True if self.molecule is not None else False
     
     # Function to calculate fraction of aliphatic carbons that are branch points.
     # Called by the instance's parse_smiles function.
@@ -36,9 +36,9 @@ class SmilesTransformer():
         
         # If the SMILES code was properly interpreted, compute the descriptors of interest.
         # If not, return an array of zeroes instead.
-        # (Note: Because frontend.py only generates predictions after valid_smiles
+        # (Note: Because frontend.py only generates predictions after valid_stucture
         # is confirmed True, this if statement should never actually be false.)
-        if self.valid_smiles:
+        if self.valid_structure:
         
             # Invoke the function for SMARTS-based substructure searching
             self.branching_frac = self.calc_branch_frac()
@@ -76,12 +76,13 @@ class SmilesTransformer():
     # The image is returned as a string of bytes to be rendered by Flask.
     def draw_structure(self):
     	# Generate the structure as a PIL image
-    	struct_pil = Draw.MolToImage(self.molecule)
+    	struct_pil = Draw.MolToImage(self.molecule, size = (300, 150))
+    	imageBox = struct_pil.getbbox()
+    	cropped=struct_pil.crop(imageBox)
     	
     	# Convert the PIL image to bytes
     	struct_img = BytesIO()
-    	struct_pil.save(struct_img, format = "GIF", transparency = 0)
+    	cropped.save(struct_img, format = "GIF", transparency = 0)
     	struct_img_encoded = base64.b64encode(struct_img.getvalue())
     	
-    	return struct_img_encoded
-    	
+    	return struct_img_encoded	

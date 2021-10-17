@@ -21,15 +21,15 @@ def display_results():
 
 		# Capture the user's search parameters
 		form_submission = request.form
-		raw_smiles = form_submission["raw_smiles_input"]
+		raw_mol_input = form_submission["mol_struct"]
 
 		# If any query at all is present, try to proceed.
-		if raw_smiles != "":
+		if raw_mol_input != "":
 		    
-			bp_predictor = Predictor(raw_smiles)
+			bp_predictor = Predictor(raw_mol_input)
 			
-			# If the SMILES code is structurally valid, generate a prediction.
-			if bp_predictor.smiles_trans.valid_smiles == True:
+			# If the inputted structure is chemically valid, generate a prediction.
+			if bp_predictor.smiles_trans.valid_structure == True:
 				
 				# Check to make sure only allowable atoms (i.e.: those included
 				# in the training set) are present in the user's input).
@@ -53,21 +53,21 @@ def display_results():
 				warnings = bp_predictor.check_warnings()
 				
 				display = render_template("results.html",
-						smiles_code = raw_smiles,
+						smiles_code = "hello",
 						structure_img = struct_img_enc.decode("utf-8"),
 						warning_msgs = warnings,
 						bp_pred = predicted_bp)
 				return display
 			
 			else:
-				message = """The SMILES code you provided could not be interpreted. 
-					Please ensure that your SMILES code is valid."""
+				message = """The structure you provided could not be interpreted. 
+					Please ensure that your structure is chemically valid."""
 
 				display = render_template("error.html", error_msg = message)
 				return display
 
 		else:
-			# We'll end up here if the raw_smiles_input field was left blank.
+			# We'll end up here if the raw_mol_input field was left blank.
 			message = """No search query was entered."""
 
 			display = render_template("error.html", error_msg = message)
@@ -88,4 +88,4 @@ def handle_unknown(unspecified_str):
 
 # Run the app
 if __name__ == "__main__":
-  app.run(debug = True)
+  app.run(debug = False)
