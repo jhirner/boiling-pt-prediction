@@ -39,15 +39,15 @@ class SmilesTransformer():
         if self.valid_smiles:
         
             # Invoke the function for SMARTS-based substructure searching
-            branching_frac = self.calc_branch_frac()
+            self.branching_frac = self.calc_branch_frac()
             
             # Determine other features.
-            h_bond_donors = Lipinski.NumHDonors(self.molecule)
-            mol_wt = Descriptors.ExactMolWt(self.molecule)
-            rings_aromatic = Lipinski.NumAromaticRings(self.molecule)
+            self.h_bond_donors = Lipinski.NumHDonors(self.molecule)
+            self.mol_wt = Descriptors.ExactMolWt(self.molecule)
+            self.rings_aromatic = Lipinski.NumAromaticRings(self.molecule)
 
             # Compile the prediction features as a tuple, then convert to array.
-            pred_tup = (branching_frac, h_bond_donors, mol_wt, rings_aromatic)
+            pred_tup = (self.branching_frac, self.h_bond_donors, self.mol_wt, self.rings_aromatic)
             pred_array = np.ascontiguousarray(pred_tup)
             pred_array = pred_array.reshape((1, -1))
             
@@ -57,3 +57,14 @@ class SmilesTransformer():
         
         else:
             return np.zeros((1,4))
+            
+    # This function generates a list of unique atomic numbers present in the molecule.
+    # It is used for validation purposes by frontend.py via predict.py to ensure that
+    # only atoms included in the training set are present in the user-inputted structure.
+    def get_atoms(self):
+    	atom_list = []
+    	
+    	for atom in self.molecule.GetAtoms():
+    		atom_list.append(atom.GetSymbol())
+    	
+    	return set(atom_list)

@@ -7,15 +7,16 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename = 'gray_style.css') }}" type="text/css">
 	
     </head>
-    <body>
+    <body><
         <div id = "main-container">
         <h1>Boiling Point Predictor</h1><p>
-        <span><strong>Oh no. Something went wrong.</strong><p>
-        <span>{{error_msg}}<p>
-        <span>Please <a href = '/'>enter a new query</a>
+        <span><strong>Oh no. Something went wrong.</strong></span><p>
+        <span>{{error_msg}}<p>&nbsp;</span><br>
+        <span>Please <a href = '/'>enter a new query</a></span>
         
-        <span style="font-size: small; font-style: italic">This page is best displayed on a tablet or larger device.<br>
-                                                          &copy; 2021 Joshua Hirner.
+        <div style="font-size: small; font-style: italic">This page is best displayed on a tablet or larger device.<br>
+                                                          &copy; 2021 Joshua Hirner.<p></div>
+        <div style="font-size: small; font-style: italic"><a href = "https://github.com/jhirner/boiling-pt-prediction">Explore this project on GitHub</a></div>                                             
         </div>
     </body>
 </html>
