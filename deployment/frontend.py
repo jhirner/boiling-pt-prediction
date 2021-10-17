@@ -45,13 +45,16 @@ def display_results():
 				# Make the prediction
 				predicted_bp = bp_predictor.predict()
 				
+				# Generate an encoded image of the structure
+				struct_img_enc = bp_predictor.smiles_trans.draw_structure()
+				
 				# Check for any structural features that may give rise to 
 				# inaccurate predictions.
 				warnings = bp_predictor.check_warnings()
 				
 				display = render_template("results.html",
 						smiles_code = raw_smiles,
-						structure_img = "Implementation pending",
+						structure_img = struct_img_enc.decode("utf-8"),
 						warning_msgs = warnings,
 						bp_pred = predicted_bp)
 				return display

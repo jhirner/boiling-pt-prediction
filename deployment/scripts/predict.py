@@ -7,7 +7,6 @@ class Predictor():
 	    self.smiles_code = smiles_code
 	    self.smiles_trans = SmilesTransformer(self.smiles_code)
 	    self.pred_features = self.smiles_trans.gen_features()
-	    print("Found features: ", self.pred_features)
 	    
 	    
 	def predict(self):

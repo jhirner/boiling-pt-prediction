@@ -1,5 +1,7 @@
-from rdkit.Chem import Lipinski, Descriptors, MolFromSmiles, MolFromSmarts
+from rdkit.Chem import Lipinski, Descriptors, MolFromSmiles, MolFromSmarts, Draw
 import numpy as np
+from io import BytesIO
+import base64
 
 class SmilesTransformer():
     
@@ -68,3 +70,18 @@ class SmilesTransformer():
     		atom_list.append(atom.GetSymbol())
     	
     	return set(atom_list)
+    	
+    	
+    # This function is used to draw a structure using the inputted SMILES code.
+    # The image is returned as a string of bytes to be rendered by Flask.
+    def draw_structure(self):
+    	# Generate the structure as a PIL image
+    	struct_pil = Draw.MolToImage(self.molecule)
+    	
+    	# Convert the PIL image to bytes
+    	struct_img = BytesIO()
+    	struct_pil.save(struct_img, format = "GIF", transparency = 0)
+    	struct_img_encoded = base64.b64encode(struct_img.getvalue())
+    	
+    	return struct_img_encoded
+    	
