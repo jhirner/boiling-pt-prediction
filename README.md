@@ -1,7 +1,7 @@
 # boiling-pt-prediction
  Development & deployment of a machine learning model for predicting boiling points from chemical structures.
  
- **Note**: The `deployment` folder necessarily includes JavaScript from [https://web.chemdoodle.com/](ChemDoodle Web Components), which is distributed under the [https://www.gnu.org/licenses/gpl-3.0.html](GNU General Public License). All other portions of this repository are original products owned by this author.
+ **Note**: The `deployment` folder necessarily includes JavaScript from [ChemDoodle Web Components](https://web.chemdoodle.com/), which is distributed under the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.html). All other portions of this repository are original products owned by this author.
  
  ## Contents
  * Jupyter notebooks used in collecting boiling point data & training an XGBoost model.
