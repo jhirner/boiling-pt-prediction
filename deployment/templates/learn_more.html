@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>
+            Boiling Point Predictor
+        </title>
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'gray_style.css') }}" type="text/css"></link>
+    </head>
+    <body>
+        <div id = "main-container">
+        <h1>Boiling Point Predictor | Learn More</h1><p>
+        <div>
+        <ul>
+		<li>Predictions are generated via a machine learning model using the XGBoost algorithm..
+		<li>The model was trained using <i>6.1k molecules</i> containing C, H, O, and N using data from the 2015 edition of the <a href = "https://www.sciencedirect.com/book/9780128008348/the-yaws-handbook-of-physical-properties-for-hydrocarbons-and-chemicals">Yaws Handbook</a>.
+		<li>As a result, the model is most accurate for molecules similar to those found in the training data set. This set does not include many polyaromatics or many molecules with several hydrogen bond donors, so predictions for these classes are comparatively weak. If your molecule is likely to return an inaccurate prediction, the model will let you know.
+		<li>This predictive model has been validated using 1.3k molecules. <strong>In the validation set, 90% of predictied values fall within &plusmn; 9.7 &deg;C of the measured value,</strong> and 95% of predictions fall within &plusmn; 14.5 &deg;C.
+		<li>The plot below shows predicted & experimentally measured boiling points for all the molecules in the validation set.
+	</ul><p>
+	When you're ready, <a href="/">you can go back and generate a new prediction.</a><p>
+	<center><iframe style = "width: 800px; height: 800px; border: 0px" src="{{ url_for('static', filename = 'parity-plot.html') }}"></iframe></center>
+        <p>
+
+
+
+
+
+
+        
+        <span style="font-size: small; font-style: italic">This page is best displayed on a tablet or larger device.<br>
+                                                          &copy; 2021 Joshua Hirner.<p>
+        <div style="font-size: small; font-style: italic"><a href = "https://github.com/jhirner/boiling-pt-prediction">Explore this project on GitHub</a></div>
+        </div>
+    </body>
+</html>

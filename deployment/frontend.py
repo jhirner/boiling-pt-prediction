@@ -1,7 +1,7 @@
 # A Flask-based web frontend for boiling point predictions.
 
 # Import the necessary modules and instantiate the app
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from scripts.predict import Predictor
 
 app = Flask(__name__)
@@ -86,6 +86,11 @@ def handle_unknown(unspecified_str):
     display = render_template("error.html", error_msg = message)
     return display
 
+@app.route("/about")
+def about_model():
+	display = render_template("learn_more.html")
+	return display
+
 # Run the app
 if __name__ == "__main__":
-  app.run(debug = False)
+  app.run(debug = True)

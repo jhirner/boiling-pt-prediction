@@ -24,7 +24,7 @@
         <h1>Boiling Point Predictor</h1><p>
         <span>This tool implements a machine learning model to predict the atmospheric pressure boiling point of a given molecule.</span><p>
         <span style = "font-weight: bold">Note:</span><span> Predictions are valid for molecules with boiling points in the range of 400 - 700 K (127 - 427 &deg;C).<p>
-        <span>Please draw a structure to get started.</span>
+        <span>Please draw a structure to get started. (Be sure to start drawing on the dot.) Alternatively, you can <a href="/about">learn more about how these predictions are generated.</a></span>
             <p>
             
         <span style = "width: 100%; margin: auto">
@@ -36,22 +36,13 @@
                 <tr>
                     <td style="text-align:center">
 						<script>
-						// changes the default JMol color of hydrogen to black so it appears on white backgrounds
 						ChemDoodle.ELEMENT['H'].jmolColor = 'black';
-						// darkens the default JMol color of sulfur so it appears on white backgrounds
 						ChemDoodle.ELEMENT['S'].jmolColor = '#B9A130';
-						// initializes the SketcherCanvas
 						let sketcher = new ChemDoodle.SketcherCanvas('sketcher', 500, 300, {useServices:false, oneMolecule:true, requireStartingAtom:true});
-						// sets terminal carbon labels to display
 						sketcher.styles.atoms_displayTerminalCarbonLabels_2D = true;
-						// sets atom labels to be colored by JMol colors, which are easy to recognize
 						sketcher.styles.atoms_useJMOLColors = true;
-						// enables overlap clear widths, so that some depth is introduced to overlapping bonds
 						sketcher.styles.bonds_clearOverlaps_2D = true;
-						// sets the shape color to improve contrast when drawing figures
 						sketcher.styles.shapes_color = 'c10000';
-						// because we do not load any content, we need to repaint the sketcher, otherwise we would just see an empty area with the toolbar
-						// however, you can instead use one of the Canvas.load... functions to pre-populate the canvas with content, then you don't need to call repaint
 						sketcher.repaint();
 						</script>
 						<br>
