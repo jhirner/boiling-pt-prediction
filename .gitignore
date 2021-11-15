@@ -3,3 +3,4 @@ __pycache__
 *.pdf
 *.db*
 data/*
+project_desc.txt
