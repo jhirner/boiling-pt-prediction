@@ -5,8 +5,8 @@
  
  ## Contents
  * Jupyter notebooks used in collecting boiling point data & training an XGBoost model.
- * A Flask-based deployment of the model for prediction of user-drawn models.
+ * A Flask-based deployment of the model for prediction of user-drawn models (in the `deployment` directory). The model is deployed at [bp.withjosh.net](https://bp.withjosh.net).
  
  ## Installation
  No installation is necessary in order to view the Jupyter notebooks used in the development of this model.
-If you wish to install a copy of the deployed model for generating predictions, first install the required Python modules, which are listed in `requirements.txt`. Then, clone this repository into a directory of your choice. The web app may be launched by executing `python3 frontend.py` from the `deployment` subdirectory. 
+If you wish to install a copy of the deployed model for generating predictions **or** if you wish to reproduce & extend this analysis, first install the required Python modules listed in `requirements.txt`. Then, clone this repository into a directory of your choice. The web app may be launched by executing `python3 frontend.py` from the `deployment` subdirectory.
