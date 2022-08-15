@@ -10,6 +10,10 @@ A chemical's boiling point (the temperature at which it boils) is useful in a va
 
 [Gas chromatography](https://en.wikipedia.org/wiki/Gas_chromatography) (GC) is a very common laboratory technique that separate the components of a mixture, primarily by boiling point. Without supplementing it with other techniques (such as mass spectrometry, MS), however, *GC alone cannot provide information about the identity* of a mixture's components -- only the total number of components, their relative ranking in boiling point (low to high), and their relative abundance in the mixture.
 
+![An example gas chromatogram](https://upload.wikimedia.org/wikipedia/commons/f/f2/3_mixtures_of_octane_and_nonane.png)
+
+*An example of annotated GC data for three different mixtures. The x-axis is approximately a surrogate for boiling point. Component names are shown for clarity, but are not provided directly by the experiment. Shared by [Wikipedia user Quantumkinetics](https://commons.wikimedia.org/wiki/File:3_mixtures_of_octane_and_nonane.png) under the [Creative Commons Attribution 3.0 license](https://creativecommons.org/licenses/by/3.0/deed.en).*
+
 A GC sample could contain, for example, a desired reaction product (such as a useful pharmaceutical) and an undesired contaminant (such as a toxic byproduct accidentally formed while preparing the valuable drug). We may even know the chemical structure of each molecule, but which component is which in a GC analysis? Answering this question helps us understand: Is this mixture mostly the useful drug, or mostly the toxic byproduct?
 
 **Boiling point data is not available for all possible chemicals.** With new molecules being made every day, there will will *never* be a database of every chemical's boiling point. A reliable tool for predicting unknown boiling points would simplify the interpretation of GC data.
